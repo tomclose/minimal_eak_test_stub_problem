@@ -6,6 +6,7 @@ module.exports = function(grunt) {
       path = require('path'),
       request = require('request');
 
+  var cors = require('cors');
   /**
   Task for serving the static files.
 
@@ -21,6 +22,7 @@ module.exports = function(grunt) {
 
     app.use(lock);
     app.use(express.compress());
+    app.use(cors());
 
     if (proxyMethod === 'stub') {
       grunt.log.writeln('Using API Stub');
